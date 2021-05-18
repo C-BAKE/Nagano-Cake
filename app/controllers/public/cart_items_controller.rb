@@ -1,9 +1,5 @@
 class Public::CartItemsController < ApplicationController
-    
-  def index
-  end
-  
-  def update
+
   end
   
   def create
@@ -16,5 +12,4 @@ class Public::CartItemsController < ApplicationController
   end
   
 
-  
 end
