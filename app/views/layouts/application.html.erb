@@ -38,15 +38,9 @@
                   <li id="youkoso">ようこそ、<%= current_end_user.last_name %>さん！</li>
                   <li><%= link_to end_users_path do %><i class="fas fa-user"></i>マイページ<% end %></li>
                   <li><%= link_to items_path do %><i class="fas fa-cookie-bite"></i>商品一覧<% end %></li>
-<<<<<<< HEAD
-                  <li><%= link_to cart_items_path do %><div class="icon-flex"><i class="icon-count text-center"><%= current_member.cart_items.count %></i></div><i class="cart">カート</i><% end %></li>
-                  <li><%= link_to destroy_end_user_session_path, method: :delete do %><i class="fas fa-sign-out-alt"></i>ログアウト<% end %></li>
-                <%#= image_tag "cake.gif", :size =>'80x80' %> 
-=======
                   <li><%= link_to cart_items_path do %><div class="icon-flex"><i class="icon-count text-center"><%#= current_member.cart_items.count %></i></div><i class="cart">カート</i><% end %></li>
                   <li><%= link_to destroy_end_user_session_path, method: :delete do %><i class="fas fa-sign-out-alt"></i>ログアウト<% end %></li>
                   <%#= image_tag "cake.gif", :size =>'80x80' %>
->>>>>>> aa89cab39b04b10a9668db245732650e682425ea
                 <!-- 管理者でログインしている時 -->
                 <% elsif admin_signed_in?%>
                   <li><%= link_to ' 商品一覧', admin_items_path %></li>
