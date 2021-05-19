@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     get 'top' => 'homes#top', as: 'top'
     get 'search' => 'homes#search', as: 'search'
     get 'end_users/:end_user_id/orders' => 'orders#index', as: 'end_user_orders'
-    resources :end_users, only: [:show, :edit, :update]
+    resources :end_users, only: [:index, :show, :edit, :update]
     resources :items, except: [:destroy]
     resources :genres, only: [:index, :create, :edit, :update]
     resources :orders, only: [:show, :update] do
