@@ -27,10 +27,8 @@ Rails.application.routes.draw do
     get 'orders/complete' => 'orders#complete', as: 'complete'
 
     resources :addresses, only: [:index, :create, :edit, :update, :destroy]
-    resources :items, only: [:index, :show] do
-      resources :cart_items, only: [:create, :update, :destroy]
-    end
-    resources :cart_items, only: [:index]
+    resources :items, only: [:index, :show]
+    resources :cart_items, only: [:index, :create, :update, :destroy]
     resources :orders, only: [:new, :index, :create, :show]
   end
 end
