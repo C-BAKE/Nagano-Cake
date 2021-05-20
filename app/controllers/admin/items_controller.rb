@@ -34,15 +34,7 @@ class Admin::ItemsController < ApplicationController
   	end
 
   end
-  
-  private
 
-  def item_params
-  	params..permit(:genre_id,:name,:unit_price_without_tax,:sale_status,:explanation,:image)
-  end
-
-
-end
 
   private
 
