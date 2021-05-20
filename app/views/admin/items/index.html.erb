@@ -1,7 +1,7 @@
 <div class = "container">
   <div class = "row">
     <h2>商品一覧</h2>
-    
+
     <div class="text-right index-new">
     <%= link_to new_admin_item_path do %>
       <button type="button" class="btn btn-success btn-success btn-circle btn-lg">＋</button>
@@ -23,12 +23,12 @@
         <% @items.each do |item| %>
         <tr>
           <td><%= item.id %></td>
-          <td><%= link_to item.title, item_path(item.id) %></td>
+          <td><%= link_to item.name, admin_item_path(item.id) %></td>
           <td><%= item.non_taxed_price %></td>
-          <td><%= item.genres.name %></td>
+          <td><%#= item.genres.name %></td>
           <td><%= item.is_active %></td>
         </tr>
-        
+
         <% end %>
       </tbody>
 
