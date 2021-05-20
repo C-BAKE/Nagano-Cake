@@ -32,5 +32,14 @@ class Admin::ItemsController < ApplicationController
   	else
   		render "edit"
   	end
+
   end
+
+  private
+
+    def item_params
+      params.permit(:name, :description, :non_taxed_price, :is_active, :image_id)
+    end
+
 end
+
