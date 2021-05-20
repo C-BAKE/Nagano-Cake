@@ -18,6 +18,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def show
+    @item = Item.find(params[:id])
   end
 
   def edit
@@ -31,6 +32,7 @@ class Admin::ItemsController < ApplicationController
   	else
   		render "edit"
   	end
+
   end
   
   private
@@ -39,6 +41,14 @@ class Admin::ItemsController < ApplicationController
   	params..permit(:genre_id,:name,:unit_price_without_tax,:sale_status,:explanation,:image)
   end
 
+
+end
+
+  private
+
+    def item_params
+      params.permit(:name, :description, :non_taxed_price, :is_active, :image_id)
+    end
 
 end
 

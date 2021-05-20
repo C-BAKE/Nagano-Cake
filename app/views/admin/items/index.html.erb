@@ -23,9 +23,9 @@
         <% @items.each do |item| %>
         <tr>
           <td><%= item.id %></td>
-          <td><%= link_to item.title, item_path(item.id) %></td>
+          <td><%= link_to item.name, admin_item_path(item.id) %></td>
           <td><%= item.non_taxed_price %></td>
-          <td><%= item.genres.name %></td>
+          <td><%#= item.genres.name %></td>
           <td><%= item.is_active %></td>
         </tr>
 
