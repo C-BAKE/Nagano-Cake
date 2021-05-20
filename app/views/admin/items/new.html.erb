@@ -1,0 +1,35 @@
+<div class="container takasa">
+  <div class="row row-new">
+
+    <h2>商品新規登録</h2><br>
+
+<!-- form_with部分 -->
+<%= form_with model: @Item, url:'/admin/items', local:true do |f| %>
+
+ <div class="col-xs-8">
+
+      <form>
+        <div class="new-field">
+          <h4><%= f.label :商品名 ,class: "col-xs-3" %>
+          <%= f.text_field :name, autofocus: true, autocomplete: "item_name" ,class: "col-xs-8"%></h4>
+        </div>
+        <div class="new-field">
+          <h4><%= f.label :商品説明 ,class: "col-xs-3" %>
+          <%= f.text_area :description, autofocus: true, autocomplete: "description" ,class: "col-xs-8"%></h4>
+        </div>
+
+        <div class="new-field">
+          <h4><%= f.label :税抜価格 ,class: "col-xs-3 block"  %>
+          <%= f.text_field :non_taxed_price, autofocus: true, autocomplete: "non_taxed_price" ,class: "col-xs-8"%></h4>
+        </div>
+        <div class="new-field">
+          <h4><%= f.label :販売ステータス  ,class: "col-xs-3 fix" %>
+          <%= f.select :is_active, ["販売中", "販売停止"] ,class: "btn btn-primary"%></h4>
+        </div>
+        <div class="text-right"><%= f.submit "商品登録" ,class: "btn btn-primary"%></div>
+        <% end %>
+      </form>
+
+    </div>
+  </div>
+</div>
