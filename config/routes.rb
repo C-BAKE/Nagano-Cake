@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  devise_for :admins
-  
+  devise_for :admins, controllers: {
+    sessions: 'admins/sessions',
+  }
+
   namespace :admin do
     get 'top' => 'homes#top', as: 'top'
     get 'search' => 'homes#search', as: 'search'
@@ -18,7 +20,7 @@ Rails.application.routes.draw do
     sessions: 'end_users/sessions',
     registrations: 'end_users/registrations',
   }
-  
+
   scope module: :public do
     root 'homes#top'
     get 'homes/about' => 'homes#about'
