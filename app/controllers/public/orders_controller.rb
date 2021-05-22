@@ -1,5 +1,6 @@
 class Public::OrdersController < ApplicationController
 
+
   def index
   end
 
@@ -7,6 +8,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def new
+    @order = Order.new
+    @address = Address.new
   end
 
   def create
