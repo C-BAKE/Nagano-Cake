@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     root 'homes#top'
     get 'homes/about' => 'homes#about'
     get 'end_users/mypage' => 'end_users#show', as: 'mypage'
-    get 'end_users/edit' => 'end_users#edit', as: 'edit'
+    get 'end_users/mypage/edit' => 'end_users#edit', as: 'edit'
     patch 'end_users' => 'end_users#update', as: 'update'
     get 'end_users/unsubscribe' => 'end_users#unsubscribe', as: 'confirm_unsubscribe'
     patch 'end_users/withdraw' => 'end_users#withdraw', as: 'withdraw_end_user'
