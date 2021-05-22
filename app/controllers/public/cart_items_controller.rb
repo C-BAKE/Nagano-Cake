@@ -3,6 +3,7 @@ class Public::CartItemsController < ApplicationController
  before_action :set_cart_item, only: [:create, :update, :destroy]
 
 
+
   def index
     @cart_items = current_end_user.cart_items.includes(:item)
   end
@@ -47,7 +48,7 @@ class Public::CartItemsController < ApplicationController
   end
 
   def set_cart_item
-    @item = Item.find(params[:cart_item][:item_id])
-    #@cart_item = current_end_user.has_in_cart(@item)
+    @item = Item.find(params[:cart_item][:item_id][:quantity])
+    @cart_item = current_end_user.has_in_cart(@item)
   end
 end
