@@ -48,7 +48,7 @@ class Public::CartItemsController < ApplicationController
   end
 
   def set_cart_item
-    @item = Item.find(params[:cart_item][:item_id])
-    #@cart_item = current_end_user.has_in_cart(@item)
+    @item = Item.find(params[:cart_item][:item_id][:quantity])
+    @cart_item = current_end_user.has_in_cart(@item)
   end
 end
