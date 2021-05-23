@@ -10,10 +10,13 @@ class Public::EndUsersController < ApplicationController
   end
 
   def update
+    
     @end_user = current_end_user
     if @end_user.update(end_user_params)
-      redirect_to mypage_path, notice: '会員情報の更新が完了しました。'
+      flash[:success] = "個人情報を編集しました"
+      redirect_to mypage_path
     else
+      flash[:danger] = '個人情報の編集に失敗しました'
       render :edit
     end
   end
@@ -26,12 +29,8 @@ class Public::EndUsersController < ApplicationController
 
    private
 
-  def set_current_end_user
-    @customer = current_end_user
-  end
-
   def end_user_params
-    params.require(end_user).permit(:last_name, :first_name, :kana_first_name, :kana_last_name, :email, :postal_code, :address, :telephone_number)
+    params.require(:end_user).permit(:last_name, :first_name, :kana_first_name, :kana_last_name, :email, :postal_code, :address, :telephone_number)
   end
 
 end
