@@ -10,7 +10,7 @@ class Public::EndUsersController < ApplicationController
   end
 
   def update
-    
+
     @end_user = current_end_user
     if @end_user.update(end_user_params)
       flash[:success] = "個人情報を編集しました"
@@ -25,6 +25,10 @@ class Public::EndUsersController < ApplicationController
   end
 
   def withdraw
+    @end_user = current_end_user
+    @end_user.update(is_deleted: false)
+    reset_session
+    redirect_to root_path
   end
 
    private
