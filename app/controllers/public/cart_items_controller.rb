@@ -1,6 +1,6 @@
 class Public::CartItemsController < ApplicationController
  before_action :authenticate_end_user!
- before_action :set_cart_item, except: [ :index, :update, :destroy]
+ before_action :set_cart_item, except: [ :index, :update, :destroy, :destroy_all]
 
 
 
@@ -10,18 +10,19 @@ class Public::CartItemsController < ApplicationController
   end
 
   def create
-      if @cart_item
+    
+    if @cart_item
       new_quantity = @cart_item.quantity + cart_item_params[:quantity]
       @cart_item.update(quantity: new_quantity)
       redirect_to cart_items_path
-      else
+    else
       @cart_item = current_end_user.cart_items.new(cart_item_params)
       @cart_item.item_id = @item.id
-      if @cart_item.save
+    if @cart_item.save
         redirect_to cart_items_path
-      else
+    else
         render 'public/items/show'
-      end
+    end
     end
   end
 
