@@ -6,6 +6,7 @@ class Public::CartItemsController < ApplicationController
 
   def index
     @cart_items = current_end_user.cart_items.includes(:item)
+    @total = 0
   end
 
   def create
