@@ -12,7 +12,7 @@ class Public::CartItemsController < ApplicationController
   def create
     
     if @cart_item
-     new_quantity = @cart_item.quantity + cart_item_params[:quantity]
+      new_quantity = @cart_item.quantity + cart_item_params[:quantity]
       @cart_item.update(quantity: new_quantity)
       redirect_to cart_items_path
     else
