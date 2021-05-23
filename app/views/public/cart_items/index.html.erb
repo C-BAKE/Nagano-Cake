@@ -32,7 +32,7 @@
               <% end %>
         </td>
         <td><%= ((cart_item.item.non_taxed_price*1.1).floor*cart_item.quantity) %>
-            <%# @total += ((cart_item.item.non_taxed_price*1.1).floor*cart_item.quantity) %>
+            <% @total += ((cart_item.item.non_taxed_price*1.1).floor*cart_item.quantity) %>
             <!--each文の小計を@totalに代入 => 代入演算子。コントローラーで@totalに整数利用できるよう初期値0を設定している。-->
         </td>
         <td><div style="margin-left:50px;">

@@ -17,3 +17,41 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+
+.takasa{
+  min-height:74vh;
+}
+
+#container{
+	height: 450px;
+	width: 550px;
+}
+
+.image1 {
+  width:790px;
+  height:250px;
+  background-image: url(about.png);
+  background-size: cover;
+  background-position: center;
+}
+
+.bg_top {
+  width:790px;
+  height:250px;
+  margin-top: 20px;
+  background-image: url(shop.jpeg);
+  background-size: cover;
+  background-position: center;
+  padding: 50px 200px;
+}
+
+.bg-top2 {
+  margin: auto;
+  width: 50px;
+  height: 150px;
+  padding: 30px
+}
+
+.font-text {
+   color: white;
+}
