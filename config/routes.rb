@@ -17,10 +17,6 @@ Rails.application.routes.draw do
     end
   end
 
-  devise_for :end_users, controllers: {
-    sessions: 'end_users/sessions',
-    registrations: 'end_users/registrations',
-  }
 
   scope module: :public do
     root 'homes#top'
@@ -34,9 +30,14 @@ Rails.application.routes.draw do
     post 'orders/confirm' => 'orders#confirm'
     get 'orders/complete' => 'orders#complete', as: 'complete'
 
+
     resources :addresses, only: [:index, :create, :edit, :update, :destroy]
     resources :items, only: [:index, :show]
     resources :cart_items, only: [:index, :create, :update, :destroy]
     resources :orders, only: [:new, :index, :create, :show]
   end
+  devise_for :end_users, controllers: {
+    sessions: 'end_users/sessions',
+    registrations: 'end_users/registrations',
+  }
 end
