@@ -1,5 +1,6 @@
 class OrderedItem < ApplicationRecord
   belongs_to :item
   belongs_to :order
-  enum order_status: {入金待ち:0, 入金確認:1, 製作中:2, 発送準備中:3, 発送済:4}
+
+  enum production_status: [:着手不可,:製作待ち,:製作中,:製作完了]
 end
