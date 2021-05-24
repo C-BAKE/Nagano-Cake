@@ -3,9 +3,13 @@ class Public::OrdersController < ApplicationController
   before_action :ensure_cart_items, only: [:new, :confirm, :create, :error]
 
   def index
+
   end
 
   def show
+    @order = Order.find(params[:id]) #order特定
+    @order_item = @order.order_items #特定したorserからorder_items全部取得
+    @total = 0 #変数提議　合計を計算する変数
   end
 
   def new
@@ -49,7 +53,7 @@ class Public::OrdersController < ApplicationController
 
   def complete
   end
-  
+
   def create
     @order = Order.new(order_params) #初期化代入
     @order.end_user_id = current_end_user.id #自身のidを代入
@@ -69,8 +73,8 @@ class Public::OrdersController < ApplicationController
 
   end
 
-  
-  
+
+
   private
 
   def order_params
@@ -81,5 +85,5 @@ class Public::OrdersController < ApplicationController
     @cart_items = current_end_user.cart_items.includes(:item)
     redirect_to items_path unless @cart_items.first
   end
-  
+
 end
