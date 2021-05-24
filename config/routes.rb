@@ -30,7 +30,7 @@ Rails.application.routes.draw do
     get '/orders/confirm' => 'orders#confirm'
     post 'orders/confirm' => 'orders#confirm'
     get 'orders/complete' => 'orders#complete', as: 'complete'
-
+    
 
     resources :addresses, only: [:index, :create, :edit, :update, :destroy]
     resources :items, only: [:index, :show]
