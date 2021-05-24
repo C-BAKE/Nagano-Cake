@@ -29,7 +29,7 @@ class Admin::ItemsController < ApplicationController
 
   def update
     @item = Item.find(params[:id])
-  	if @item.update(item_params)
+  	if @item.update(item_update_paparams)
   	  redirect_to admin_item_path(@item.id)
   	else
   		render "edit"
@@ -43,7 +43,6 @@ class Admin::ItemsController < ApplicationController
     def item_params
       params.require(:item).permit(:genre_id, :name, :description, :non_taxed_price, :is_active, :image_id)
     end
-    
    
 
 end
