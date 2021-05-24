@@ -3,10 +3,12 @@ class Public::OrdersController < ApplicationController
   before_action :ensure_cart_items, only: [:new, :confirm, :create, :error]
 
   def index
-     @orders = current_end_user.orders
   end
 
   def show
+    @order = Order.find(params[:id]) #order特定
+    @order_item = @order.order_items #特定したorserからorder_items全部取得
+    @total = 0 #変数提議　合計を計算する変数
   end
 
   def new
