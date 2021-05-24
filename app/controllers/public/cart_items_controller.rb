@@ -1,11 +1,12 @@
 class Public::CartItemsController < ApplicationController
  before_action :authenticate_end_user!
- before_action :set_cart_item, only: [:create, :update, :destroy]
+ before_action :set_cart_item, except: [ :index, :update, :destroy, :destroy_all]
 
 
 
   def index
     @cart_items = current_end_user.cart_items.includes(:item)
+    @total = 0
   end
 
   def create
@@ -16,23 +17,23 @@ class Public::CartItemsController < ApplicationController
      else
       @cart_item = current_end_user.cart_items.new(cart_item_params)
       @cart_item.item_id = @item.id
-     # binding.pry
-      if @cart_item.save
+    if @cart_item.save
         redirect_to cart_items_path
-      else
+    else
         render 'public/items/show'
-      end
-     end
+    end
+    end
   end
 
   def update
     @cart_item = CartItem.find(params[:id])
-    @cart_item.update(cart_item_params) 
+    @cart_item.update(cart_item_params)
     redirect_to cart_items_path
   end
 
   def destroy
-    @cart_item.destroy if @cart_item
+    @cart_item = CartItem.find(params[:id])
+    @cart_item.destroy
     redirect_to cart_items_path
   end
 
@@ -50,6 +51,6 @@ class Public::CartItemsController < ApplicationController
 
   def set_cart_item
     @item = Item.find(params[:cart_item][:item_id])
-    #@cart_item = current_end_user.has_in_cart(@item)
+    # @cart_item = current_end_user.has_in_cart(@item)
   end
 end
