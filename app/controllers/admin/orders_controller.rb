@@ -1,8 +1,8 @@
 class Admin::OrdersController < ApplicationController
     before_action :authenticate_admin!
 
+
   def index
-    @order = Order.all
     if params[:end_user_id]
       @end_user = EndUser.find(params[:end_user_id])
       @orders = @end_user.orders.page(params[:page]).reverse_order
