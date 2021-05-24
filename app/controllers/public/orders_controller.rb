@@ -28,7 +28,7 @@ class Public::OrdersController < ApplicationController
 
     elsif  params[:order][:address_number] ==  "2" #address_numberが　”2”　なら下記　登録済からの選択が選ばれたら
       @order.postal_code = Address.find(params[:order][:address]).postal_code #newページで選ばれた配送先住所idから特定して郵便番号の取得代入
-      @order.address = Address.find(params[:order][:address]).shipping_address #newページで選ばれた配送先住所idから特定して住所の取得代入
+      @order.address = Address.find(params[:order][:address]).address #newページで選ばれた配送先住所idから特定して住所の取得代入
       @order.name = Address.find(params[:order][:address]).name #newページで選ばれた配送先住所idから特定して宛名の取得代入
 
     elsif params[:order][:address_number] ==  "3" #address_numberが　”3”　なら下記　新しいお届け先が選ばれたら
@@ -36,7 +36,7 @@ class Public::OrdersController < ApplicationController
       @address.address = params[:order][:address] #newページで新しいお届け先に入力した住所を取得代入
       @address.name = params[:order][:name] #newページで新しいお届け先に入力した宛名を取得代入
       @address.postal_code = params[:order][:postal_code] #newページで新しいお届け先に入力した郵便番号を取得代入
-      @address.end_user_id = end_user_member.id #newページで新しいお届け先に入力したmember_idを取得代入
+      @address.end_user_id = current_end_user.id #newページで新しいお届け先に入力したmember_idを取得代入
       if @address.save #保存
       @order.postal_code = @address.postal_code #上記で代入された郵便番号をorderに代入
       @order.name = @address.name #上記で代入された宛名をorderに代入
@@ -49,7 +49,7 @@ class Public::OrdersController < ApplicationController
 
   def complete
   end
-  
+
   def create
     @order = Order.new(order_params) #初期化代入
     @order.end_user_id = current_end_user.id #自身のidを代入
@@ -69,8 +69,8 @@ class Public::OrdersController < ApplicationController
 
   end
 
-  
-  
+
+
   private
 
   def order_params
@@ -81,5 +81,5 @@ class Public::OrdersController < ApplicationController
     @cart_items = current_end_user.cart_items.includes(:item)
     redirect_to items_path unless @cart_items.first
   end
-  
+
 end
