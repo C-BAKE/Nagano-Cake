@@ -3,6 +3,7 @@ class Public::OrdersController < ApplicationController
   before_action :ensure_cart_items, only: [:new, :confirm, :create, :error]
 
   def index
+     @orders = current_end_user.orders
   end
 
   def show
@@ -56,12 +57,12 @@ class Public::OrdersController < ApplicationController
     @order.save #orderに保存
 #order_itmemの保存
   current_end_user.cart_items.each do |cart_item| #カートの商品を1つずつ取り出しループ
-    @order_item = OrderedItem.new #初期化宣言
-    @order_item.item_id = cart_item.item_id #商品idを注文商品idに代入
-    @order_item.quantity = cart_item.quantity #商品の個数を注文商品の個数に代入
-    @order_item.price = (cart_item.item.non_taxed_price*1.1).floor #消費税込みに計算して代入
-    @order_item.order_id =  @order.id #注文商品に注文idを紐付け
-    @order_item.save #注文商品を保存
+    @ordered_item = OrderedItem.new #初期化宣言
+    @ordered_item.item_id = cart_item.item_id #商品idを注文商品idに代入
+    @ordered_item.quantity = cart_item.quantity #商品の個数を注文商品の個数に代入
+    @ordered_item.price = (cart_item.item.non_taxed_price*1.1).floor #消費税込みに計算して代入
+    @ordered_item.order_id =  @order.id #注文商品に注文idを紐付け
+    @ordered_item.save #注文商品を保存
   end #ループ終わり
 
     current_end_user.cart_items.destroy_all #カートの中身を削除
