@@ -15,6 +15,7 @@ class Admin::EndUsersController < ApplicationController
   end
 
   def update
+
   end
 
 
