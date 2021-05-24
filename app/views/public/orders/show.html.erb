@@ -30,13 +30,13 @@
 						<th>個数</th>
 						<th>小計</th>
 					</tr>
-					<% @order_item.each do |order_item| %>
+					<% @ordered_item.each do |ordered_item| %>
 					<tr>
-						<td><%= order_item.item.name %></td>
-						<td><%= order_item.price %></td>
-						<td><%= order_item.number_of_items %></td>
-						<td><%= (order_item.price*order_item.quantity) %>
-							<% @total += (order_item.price*order_item.quantity) %>
+						<td><%= ordered_item.item.name %></td>
+						<td><%= ordered_item.price %></td>
+						<td><%= ordered_item.quantity %></td>
+						<td><%= (ordered_item.price*ordered_item.quantity) %>
+							<% @total += (ordered_item.price*ordered_item.quantity) %>
 						</td>
 					</tr>
 					<% end %>
