@@ -6,9 +6,9 @@
   <!-- 画像選択欄 -->
   <div class="row">
     <div class="col-xs-4">
-      <%= attachment_image_tag @item, :image_id, size: "300x300",  fallback: "no-image.jpeg"%><br>
+      <%= attachment_image_tag @item, :image, size: "300x300",  fallback: "no-image.jpeg"%><br>
       <label>Image</label>
-      <%#= f.attachment_field :image_id %>
+      <%= f.attachment_field :image %>
     </div>
     <!-- 商品登録フォーム -->
     <div class="col-xs-8">
