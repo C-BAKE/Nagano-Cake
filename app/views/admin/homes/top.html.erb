@@ -19,10 +19,9 @@
     <% @order.each do |order| %>
     <tr>
       <td><%= link_to order.created_at, admin_order_path(order) %></td>
-      <td><%= order.end_user.last_name %></td>
+      <td><%= order.end_user.last_name %><%= order.end_user.first_name %></td>
       <td><%= order.ordered_items.sum(:quantity) %></td>
       <td><%= order.order_status %></td>
-      <td><%#= link_to "注文詳細", admin_order_path(order), class:"btn btn-primary" %></td>
     </tr>
     <% end %>
   </table>

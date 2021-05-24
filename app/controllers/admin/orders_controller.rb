@@ -3,7 +3,6 @@ class Admin::OrdersController < ApplicationController
 
 
   def index
-    @order = Order.all
     if params[:end_user_id]
       @end_user = EndUser.find(params[:end_user_id])
       @orders = @end_user.orders.page(params[:page]).reverse_order
