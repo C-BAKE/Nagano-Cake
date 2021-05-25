@@ -1,52 +1,46 @@
-<div class="container takasa">
-  <div class="row row-new">
+<div class="container">
+  <div class="row">
+      <h4>商品新規登録</h4>
+    <div class="col-xs-9 mx-auto">
 
-    <h2>商品新規登録</h2><br>
+      <%= form_with model: @Item, url:'/admin/items', local:true do |f| %>
+      <table>
 
-    <!-- 画像選択欄 -->
-    <div class="col-xs-4">
+        <%#= attachment_image_tag @item, :image, class: "img-square", fallback: "no-image.jpeg", size:"300x300" %>
+        <tr>
+          <td><%= f.label :商品画像 %></td>
+　　　    <td><%= f.attachment_field :image, placeholder: "商品画像" %></td>
+        </tr>
 
-    <!-- form_with部分 -->
-    <%= form_with model: @Item, url:'/admin/items', local:true do |f| %>
+        <tr>
+          <td><%= f.label :商品名 %></td>
+          <td><%= f.text_field :name, autofocus: true, autocomplete: "item_name" ,class: "col-xs-8"%></td>
+        </tr>
 
-      <div class="item-image">
-      <%= attachment_image_tag @item, :image, class: "img-square", fallback: "no-image.jpeg", size:"300x300" %>
-      </div><br>
-　　　<%= f.attachment_field :image, placeholder: "商品画像" %>
+        <tr>
+          <td><%= f.label :商品説明 %></td>
+          <td><%= f.text_area :description, autofocus: true, autocomplete: "description" ,class: "col-xs-8"%></td>
+        </tr>
 
-    </div>
-
- <div class="col-xs-8">
-
-      <form>
-        <div class="new-field">
-          <h4><%= f.label :商品名 ,class: "col-xs-3" %>
-          <%= f.text_field :name, autofocus: true, autocomplete: "item_name" ,class: "col-xs-8"%></h4>
-        </div>
-        <div class="new-field">
-          <h4><%= f.label :商品説明 ,class: "col-xs-3" %>
-          <%= f.text_area :description, autofocus: true, autocomplete: "description" ,class: "col-xs-8"%></h4>
-        </div>
-        <div class="new-field">
-          <h4><%= f.label :ジャンル ,class: "col-xs-3 fix" %>
-          <%= f.collection_select :genre_id, Genre.all, :id, :name %></h4>
+        <tr>
+          <td><%= f.label :ジャンル %></td>
+          <td><%= f.collection_select :genre_id, Genre.all, :id, :name %></td>
           <!-- f.collection_select(プロパティ名, オブジェクトの配列, value属性の項目, 表示テキストの項目) -->
           <!-- Genre.allでジャンルのテーブル内情報を持ってきてる -->
+        </tr>
 
-        </div>
+        <tr>
+          <td><%= f.label :税抜価格 %></td>
+          <td><%= f.text_field :non_taxed_price, autofocus: true, autocomplete: "non_taxed_price" ,class: "col-xs-8"%></td>
+        </tr>
 
-        <div class="new-field">
-          <h4><%= f.label :税抜価格 ,class: "col-xs-3 block"  %>
-          <%= f.text_field :non_taxed_price, autofocus: true, autocomplete: "non_taxed_price" ,class: "col-xs-8"%></h4>
-        </div>
-        <div class="new-field">
-          <h4><%= f.label :販売ステータス  ,class: "col-xs-3 fix" %>
-          <%= f.select :is_active, ["販売中", "販売停止"] ,class: "btn btn-primary"%></h4>
-        </div>
-        <div class="text-right"><%= f.submit "商品登録" ,class: "btn btn-primary"%></div>
-        <% end %>
-      </form>
-
+        <tr>
+          <td><%= f.label :販売ステータス %></td>
+          <td><%= f.select :is_active, ["販売中", "販売停止中"] ,class: "btn btn-primary"%></td>
+        </tr>
+      </table>
+        <div class="text-left"><%= f.submit "新規登録",class: "btn btn-primary"%></div>
+      <% end %>
     </div>
   </div>
 </div>
