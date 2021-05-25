@@ -1,5 +1,5 @@
 <div class="container takasa">
-  <h2><%= @end_user.first_name %><%= @end_user.last_name %>さんの会員詳細</h2><br>
+  <h2><%= @end_user.last_name %><%= @end_user.first_name %>さんの会員詳細</h2><br>
 
   <table class="table">
 	  <tr>
@@ -14,11 +14,11 @@
     </tr>
     <tr>
       <th>氏名</th>
-      <td><%= @end_user.first_name %><%= @end_user.last_name %></td>
+      <td><%= @end_user.last_name %><%= @end_user.first_name %></td>
     </tr>
     <tr>
       <th>フリガナ</th>
-      <td><%= @end_user.kana_first_name %><%= @end_user.kana_last_name %></td>
+      <td><%= @end_user.kana_last_name %><%= @end_user.kana_first_name %></td>
     </tr>
     <tr>
       <th>郵便番号</th>
