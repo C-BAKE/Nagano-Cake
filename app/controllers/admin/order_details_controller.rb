@@ -5,8 +5,8 @@ class Admin::OrderDetailsController < ApplicationController
 		@ordered_item = OrderedItem.find(params[:id]) #　特定
 		@order = @ordered_item.order #注文商品から注文テーブルの呼び出し（何度も呼び出すのは処理が増える為）
 		@ordered_item.update(ordered_item_params) #　製作ステータスの更新
-		# @order_item = Order.OderItem.find(params[:id])
-		# @order_item.update(order_item_params)
+		#@order_item = Order.OrderedItem.find(params[:id])
+		#@order_item.update(order_item_params)
 
 		if @ordered_item.production_status == "製作中" #製作ステータスが「製作作中」なら入る
 			@order.update(order_status: 2) #注文ステータスを「製作中」　に更新
