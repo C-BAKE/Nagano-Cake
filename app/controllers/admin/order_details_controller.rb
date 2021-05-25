@@ -7,6 +7,8 @@ class Admin::OrderDetailsController < ApplicationController
 		@ordered_item.update(ordered_item_params) #　製作ステータスの更新
 		# @ordered_item = Order.OderedItem.find(params[:id])
 		# @ordered_item.update(ordered_item_params)
+		#@order_item = Order.OrderedItem.find(params[:id])
+		#@order_item.update(order_item_params)
 
 		if @ordered_item.production_status == "製作中" #製作ステータスが「製作作中」なら入る
 			@order.update(order_status: 2) #注文ステータスを「製作中」　に更新
@@ -25,7 +27,7 @@ class Admin::OrderDetailsController < ApplicationController
 
 	def ordered_item_params
      params.require(:ordered_item).permit(:production_status)
-    end
+  end
 
 end
 
