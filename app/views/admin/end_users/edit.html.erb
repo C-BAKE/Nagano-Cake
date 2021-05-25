@@ -6,8 +6,13 @@
     <%= form_for(@end_user, url:admin_end_user_path) do |f| %>
     <div class="col-xs-10">
       <div class="field">
-        <%= f.label :会員ステータス ,class: "col-xs-3"%>
-        <%= f.text_field :is_deleted, autofocus: true, autocomplete: "is_deleted"%>
+        <th>会員ID</th>
+        <td><%= @end_user.id %>
+      <% if @end_user.is_deleted == "無効" %>
+        <div class="label label-primary">有効会員</div>
+      <% else %>
+        <div class="label label-danger">退会済み</div>
+      <% end %>
       </div><br>
 
       <div class="field">

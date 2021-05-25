@@ -1,7 +1,7 @@
 <div class="container takasa">
 	<h2><i class="fas fa-file-invoice"></i>注文履歴一覧</h2>
 	  <table class="table-bordered">
-	  <tr>
+	    <tr>
         <th>注文日</th>
         <th>配送先</th>
         <th>注文商品</th>
@@ -12,7 +12,7 @@
       <% @orders.each do |order| %>
       <tr>
         <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
-        <td><%= order.address %></td>
+        <td><%= order.postal_code %><br><%= order.address %><br><%= order.name %></td>
         <td><% order.ordered_items.each do |ordered_item| %>
           <%= ordered_item.item.name %>
         <% end %>
