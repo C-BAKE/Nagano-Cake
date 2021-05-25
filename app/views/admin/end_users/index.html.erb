@@ -19,9 +19,9 @@
           <td><%= end_user.email %></td>
           <td>
 					<% if end_user.is_deleted? %>
-						<span class="text-active">退会済み</span>	
+						<span class="text-active">有効</span>	
 					<% else %>
-						<span class="text-invalid">有効</span>
+						<span class="text-invalid">退会済み</span>
 					<% end %>
 				  </td>
         </tr>

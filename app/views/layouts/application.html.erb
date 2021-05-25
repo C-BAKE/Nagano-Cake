@@ -29,7 +29,7 @@
            <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light">
               <a class="navbar-brand p-3" href="/"><%= image_tag "logo.png"%></a>
-              <ul class="navbar-nav navbar-right wf-mplus1p">
+              <ul class="navbar-nav ml-auto">
                 <!-- 会員でログインしている時 -->
                 <% if end_user_signed_in? %>
                   <li id="youkoso">ようこそ、<%= current_end_user.last_name %>さん！</li>

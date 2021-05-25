@@ -1,3 +1,4 @@
+<div class="container takasa">
 <section class="inner">
   <% if flash[:notice] %>
     <p class="text-active"><%= flash[:notice] %></p>
@@ -8,44 +9,43 @@
 		<%= link_to "編集する", edit_path, class: "btn btn-success ml2" %>
 		<%#= link_to "パスワードを変更する", edit_end_user_registration_path, class: "btn btn-success ml2" %>
 	</h3>
-	<table class="customer_info mb3">
-		<thead>
-			<th></th>
-			<th></th>
-			<th></th>
-		</thead>
-		<tbody>
-			<tr>
-				<td>名前</td>
-				<td>(姓) <%= @end_user.last_name %></td>
-				<td>(名) <%= @end_user.first_name %></td>
-			</tr>
-			<tr>
-				<td>フリガナ</td>
-				<td>(セイ) <%= @end_user.kana_last_name %></td>
-				<td>(メイ) <%= @end_user.kana_first_name %></td>
-			</tr>
-			<tr>
-				<td>メールアドレス</td>
-				<td colspan="2"><%= @end_user.email %></td>
-			</tr>
-			<tr>
-				<td>郵便番号</td>
-				<td colspan="2"><%= @end_user.postal_code %></td>
-			</tr>
-			<tr>
-				<td>住所</td>
-				<td colspan="2"><%= @end_user.address %></td>
-			</tr>
-			<tr>
-				<td>電話番号</td>
-				<td colspan="2"><%= @end_user.telephone_number %></td>
-			</tr>
-		</tbody>
-	</table>
+	<div class="row">
+		<div class="col-xs-8">
+	    <table class="table table-bordered">
+		    <tbody>
+		    	<tr>
+				    <td>名前</td>
+			    	<td>(姓) <%= @end_user.last_name %></td>
+			    	<td>(名) <%= @end_user.first_name %></td>
+			    </tr>
+			    <tr>
+				    <td>フリガナ</td>
+			    	<td>(セイ) <%= @end_user.kana_last_name %></td>
+				    <td>(メイ) <%= @end_user.kana_first_name %></td>
+		    	</tr>
+			    <tr>
+				    <td>メールアドレス</td>
+				    <td colspan="2"><%= @end_user.email %></td>
+			    </tr>
+		    	<tr>
+				    <td>郵便番号</td>
+				    <td colspan="2"><%= @end_user.postal_code %></td>
+		      </tr>
+			    <tr>
+				    <td>住所</td>
+			    	<td colspan="2"><%= @end_user.address %></td>
+		    	</tr>
+		     	<tr>
+			    	<td>電話番号</td>
+			    	<td colspan="2"><%= @end_user.telephone_number %></td>
+			    </tr>
+		    </tbody>
+	     </table>
+	   </div>
+	 </div>
 	<div class="flex">
-		<%= link_to "配送先一覧", addresses_path, class: "btn btn-primary" %>
-		<%= link_to "注文履歴一覧", orders_path, class: "btn btn-primary ml2" %>
+		<p><strong>配送先　　</strong><%= link_to "一覧を見る", addresses_path, class:"btn btn-primary" %>
+		<p><strong>注文履歴　</strong><%= link_to "一覧を見る", orders_path, class:"btn btn-primary" %>
 	</div>
 </section>
-
+</div>

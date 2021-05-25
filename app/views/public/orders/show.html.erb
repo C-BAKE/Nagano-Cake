@@ -24,25 +24,27 @@
 
 			<p>注文内容</p>
 				<table class="table table-bordered">
-					<tr>
-						<th>商品</th>
-						<th>単価（税込み)</th>
-						<th>個数</th>
-						<th>小計</th>
-					</tr>
-					<% @ordered_item.each do |ordered_item| %>
-					<tr>
-						<td><%= ordered_item.item.name %></td>
-						<td><%= ordered_item.price %></td>
-						<td><%= ordered_item.quantity %></td>
-						<td><%= (ordered_item.price*ordered_item.quantity) %>
-							<% @total += (ordered_item.price*ordered_item.quantity) %>
-						</td>
+					<thead class="thead-light">
+					 <tr>
+						 <th>商品</th>
+						 <th>単価（税込み)</th>
+						 <th>個数</th>
+						 <th>小計</th>
+					 </tr>
+				 	 <% @ordered_item.each do |ordered_item| %>
+					 <tr>
+						 <td><%= ordered_item.item.name %></td>
+						 <td><%= ordered_item.price %></td>
+						 <td><%= ordered_item.quantity %></td>
+						 <td><%= (ordered_item.price*ordered_item.quantity) %>
+							 <% @total += (ordered_item.price*ordered_item.quantity) %>
+						 </td>
+						</thead>
 					</tr>
 					<% end %>
 				</table>
 			</div>
-			<div class="col-xs-6">
+			<div class="col-xs-6 ml-5">
 				<div class="row">
 				  <br><p>請求情報</p>
 				  <table class="table table-bordered">
