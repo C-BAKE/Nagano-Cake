@@ -51,12 +51,12 @@
           <td><%= ordered_item.quantity %></td>
           <td><%= ((ordered_item.price)*(ordered_item.quantity)) %> </td>
         <!-- 製作ステータス変更　更新を押すと更新-->
-          <%= form_for ordered_item, url: admin_order_order_detail_path(ordered_item) do |f| %>
+          <%= form_for ordered_item, url: admin_order_order_detail_path(＠order, ordered_item) do |f| %>
           <td><%= f.select :production_status,["着手不可","製作待ち","製作中","製作完了"] %></td><!--ステータス選択 -->
           <td><%= f.submit "更新" ,class:"btn btn-primary btn-xs" %></td>
           <% end %>
         </tr>
-          <% end %>
+        <% end %>
       </table>
     </div>
 
