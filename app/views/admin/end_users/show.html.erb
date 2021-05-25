@@ -5,7 +5,7 @@
 	  <tr>
       <th>会員ID</th>
       <td><%= @end_user.id %>
-      <% if @end_user.is_deleted == "有効" %>
+      <% if @end_user.is_deleted == "無効" %>
         <div class="label label-primary">有効会員</div>
       <% else %>
         <div class="label label-danger">退会済み</div>
