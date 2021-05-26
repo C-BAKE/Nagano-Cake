@@ -5,7 +5,7 @@
 	<div class="row">
 		<div class="col-xs-6">
 			<table align="left" class="table table-bordered">
-				<thead class="thead-light">
+				<thead class="bg-light">
 				 <tr>
 					 <th>商品名</th>
 					 <th>単価(税込)</th>
@@ -32,16 +32,16 @@
 	<div class="col-xs-4 ml-5">
 		<table class="table table-bordered ">
 			 <tr>
-				 <th>送料</th>
-				 <th>800</th>
+				 <td class="bg-light">送料</td>
+				 <td>800</td>
 			 </tr>
 			<tbody>
 				<tr>
-					<th>商品合計</th>
+					<td class="bg-light">商品合計</td>
 					<td><%= @total%></td>
 				</tr>
 				<tr>
-					<th>請求額</th>
+					<td class="bg-light">請求額</td>
 					<td><%= @total+800%></td>
 				</tr>
 			</tbody>
