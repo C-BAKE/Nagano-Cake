@@ -5,31 +5,30 @@
 			<p>注文情報</p>
 			<table align="left" class="table table-bordered">
 				<tr>
-					<td>注文日</th>
-					<td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+					<td class="bg-light">注文日</td>
+					<td .bg-secondary><%= @order.created_at.strftime('%Y/%m/%d') %></td>
 				</tr>
 				<tr>
-					<td>配送先</td>
+					<td class="bg-light">配送先</td>
 					<td>〒<%= @order.postal_code %><br><%= @order.address %><br><%= @order.name %></td>
 				</tr>
 				<tr>
-					<td>支払方法</td>
+					<td class="bg-light">支払方法</td>
 					<td><%= @order.payment_method %></td>
 				</tr>
 				<tr>
-					<td>ステータス</td>
+					<td class="bg-light">ステータス</td>
 					<td><%= @order.order_status %></td>
 				</tr>
 			</table>
 
 			<p>注文内容</p>
 				<table class="table table-bordered">
-					<thead class="thead-light">
-					 <tr>
-						 <th>商品</th>
-						 <th>単価（税込み)</th>
-						 <th>個数</th>
-						 <th>小計</th>
+					 <tr class="bg-light">
+						 <td>商品</td>
+						 <td>単価（税込み)</td>
+						 <td>個数</td>
+						 <td>小計</td>
 					 </tr>
 				 	 <% @ordered_item.each do |ordered_item| %>
 					 <tr>
@@ -39,7 +38,6 @@
 						 <td><%= (ordered_item.price*ordered_item.quantity) %>
 							 <% @total += (ordered_item.price*ordered_item.quantity) %>
 						 </td>
-						</thead>
 					</tr>
 					<% end %>
 				</table>
@@ -49,15 +47,15 @@
 				  <br><p>請求情報</p>
 				  <table class="table table-bordered">
 					<tr>
-						<td>商品合計</td>
+						<td class="bg-light">商品合計</td>
 						<th><%= @total %></th>
 					</tr>
 					<tr>
-						<td>配送料</td>
+						<td class="bg-light">配送料</td>
 						<th>800</th>
 					</tr>
 					<tr>
-						<td>ご請求額</td>
+						<td class="bg-light">ご請求額</td>
 						<th><%= @total + 800 %></th>
 					</tr>
 				  </table>
