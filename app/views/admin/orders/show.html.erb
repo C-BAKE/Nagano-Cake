@@ -1,0 +1,87 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="p-2 mb-2 bg-light">
+      <h4>注文履歴詳細</h4>
+      </div>
+      <!-- 購入詳細情報 -->
+      <table>
+      <tr>
+        <th class= "order-show">購入者</th>
+        <td><%= @order.end_user.last_name %> <%= @order.end_user.first_name %></td>
+      </tr>
+      <tr>
+        <th class= "order-show">注文日</th>
+        <td><%= @order.end_user.created_at %></td>
+      </tr>
+      <tr>
+        <th class= "order-show">配送先</th>
+        <td>〒<%= @order.postal_code %> <%= @order.address %><br><%= @order.name %></td>
+      </tr>
+      <tr>
+        <th class= "order-show">支払い方法</th>
+        <td><%= @order.payment_method %></td>
+      </tr>
+      <tr>
+
+        <!-- 注文ステータス変更　プルダウン　更新を押すとアップデート -->
+        <th>注文ステータス</th>
+        <td>
+          <%= form_with model: @order, url: admin_order_path, local: true do |f| %><!--oreder controllerのupdateの飛ぶ-->
+          　<%= f.select :order_status,["入金待ち","入金確認","製作中","発送準備中","発送済"] ,style: "margin-top:10px;#" %><!--ステータス選択 -->
+          <%= f.submit "更新" ,class: "btn btn-success btn-sm" %></td>
+          <% end %>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+
+  <div class="orders-show">
+    <div class="row">
+    <div class=" col-xs-9">
+      <table class="table">
+        <thead class = "thead-light">
+          <tr>
+            <th>商品名</th>
+            <th>単価（税込）</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th>製作ステータス</th>
+            <th></th>
+          </tr>
+        </thead>
+        <%  @ordered_items.each do |ordered_item| %><!--注文した商品の履歴一覧をeach分で表示　-->
+        <tr>
+          <td><%= ordered_item.item.name %></td>
+          <td><%= ordered_item.price %></td>
+          <td><%= ordered_item.quantity %></td>
+          <td><%= ((ordered_item.price)*(ordered_item.quantity)) %> </td>
+        <!-- 製作ステータス変更　更新を押すと更新-->
+          <%= form_for ordered_item, url: admin_order_order_detail_path(@order, ordered_item) do |f| %>
+          <td><%= f.select :production_status,["着手不可","製作待ち","製作中","製作完了"] %></td><!--ステータス選択 -->
+          <td><%= f.submit "更新" ,class:"btn btn-success btn-sm" %></td>
+          <% end %>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+    <div class="col-xs-2 ml-5" >
+       <table>
+         <tr>
+          <th>商品合計</th>
+          <td><%= @order.payment %>円</td>
+         </tr>
+         <tr>
+          <th>送料</th>
+          <td><%= @order.postage %>円</td>
+         </tr>
+         <tr>
+          <th>請求金額合計</th>
+          <td><%= (@order.payment+@order.postage) %>円</td>
+         </tr>
+       </table>
+    </div>
+  </div>
+ </div>
+</div>

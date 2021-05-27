@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-9 mx-auto">
+      <h2>商品編集</h2>
+      <%= form_for @item,url: {action: "update"} do |f| %>
+      <!-- 画像選択欄 -->
+        <table>
+          <tr>
+            <td><%= f.label :"商品画像" %></td>
+            <td><%= f.attachment_field :image %><td>
+          </tr>
+        <!-- 商品登録フォーム -->
+          <tr>
+            <td><%= f.label :"商品名" ,class: "col-xs-3" %></td>
+            <td><%= f.text_field :name, class: "col-xs-8 " %></td>
+          </tr><br>
+          <tr>
+            <td><%= f.label :"商品説明" ,class: "col-xs-3"%></td>
+            <td><%= f.text_area :description, autofocus: true, autocomplete: "description" ,class: "col-xs-8"%></td>
+          </tr>
+          <tr>
+            <td><%= f.label :"ジャンル" ,class: "col-xs-3 "%></td>
+            <td><%= f.collection_select :genre_id, Genre.all, :id, :name %></td>
+          <!-- f.collection_select(プロパティ名, オブジェクトの配列, value属性の項目, 表示テキストの項目) -->
+          <!-- Genre.allでジャンルのテーブル内情報を持ってきてる -->
+          </tr>
+          <tr>
+            <td><%= f.label :"税別価格" ,class: "col-xs-3"%></td>
+            <td><%= f.text_field :non_taxed_price, class: "col-xs-5"%>円</td><br>
+          </tr>
+          <tr>
+            <td><%= f.label :"販売ステータス" ,class: "col-xs-3" %></td>
+            <td><%= f.select :is_active, ["販売中", "販売停止中"] ,class: "btn btn-primary"%></td>
+          </tr>
+        </table>
+        <div class="text-left"><%= f.submit :変更を保存, class: "btn btn-primary" %><div>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,58 @@
+<div class="container takasa">
+  <div class="row justify-content-center">
+    <h4 class="col-10" ><%= @end_user.last_name %><%= @end_user.first_name %>さんの会員詳細</h4>
+    <%= form_for(@end_user, url:admin_end_user_path) do |f| %>
+      <table>
+        <div class="col-xs-10">
+          <tr>
+            <td>会員ID</td>
+            <td><%= @end_user.id %></td>
+          </tr>
+
+          <tr>
+            <td><%= f.label :名前 ,class: "col-xs-3"%></td>
+            <td><%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %></td>
+            <td><%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %></td>
+          </tr>
+
+          <tr>
+            <td><%= f.label :フリガナ,class: "col-xs-3" %>
+            <td><%= f.text_field :kana_last_name, autofocus: true, autocomplete: "kana_last_name" %></td>
+            <td><%= f.text_field :kana_first_name, autofocus: true, autocomplete: "kana_first_name" %></td>
+          </tr>
+
+          <tr>
+            <td><%= f.label :郵便番号 ,class: "col-xs-3"%></td>
+            <td><%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code"%></td>
+          </tr>
+
+          <tr>
+            <td><%= f.label :住所 ,class: "col-xs-3"%></td>
+            <td colspan="2"><%= f.text_field :address, autofocus: true, autocomplete: "address", class: "w-100" %></td>
+          </tr>
+
+
+          <tr>
+            <td><%= f.label :電話番号 ,class: "col-xs-3"%></td>
+            <td><%= f.text_field :telephone_number, autofocus: true, autocomplete: "telephone_number"%></td>
+          </tr>
+
+          <tr>
+            <td><%= f.label :メールアドレス ,class: "col-xs-3"%></td>
+            <td><%= f.email_field :email, autofocus: true, autocomplete: "email"%></td>
+          </tr>
+          <!-- ラジオボタンの記述 -->
+          <tr>
+            <td><%= f.label :会員ステータス ,class: "col-xs-3"%></td>
+            <td>
+              <%= f.radio_button :is_deleted, "有効" ,checked: "checked"%> 退会済み
+              <%= f.radio_button :is_deleted, "無効" %> 有効会員
+            </td>
+          </tr>
+      </table>
+          <div class="text-left"><%= f.submit "変更を保存する", class:"btn btn-primary" %></div>
+        </div>
+    <% end %>
+  </div>
+</div>
+

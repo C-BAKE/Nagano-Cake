@@ -1,0 +1,42 @@
+<div class='container'>
+  <h2>商品詳細</h2><br>
+    <div class='row'>
+
+  		<div class='col-xs-4'>
+        <%= attachment_image_tag(@item, :image, size: "300x300", fallback: "no-image.jpeg") %>
+      </div>
+
+      <div class='col-xs-7 offset-1'>
+
+          <div style="display: flex;">
+          <h6 style="margin: 0 100px 30px 0;">商品名</h6>
+          <h4><%= @item.name %></h4>
+          </div>
+
+          <div style="display: flex;">
+            <h6 style="margin: 0 90px 30px 0;">商品説明</h6>
+            <h4><%= @item.description %></h4>
+          </div>
+
+          <div style="display: flex;">
+          <h6 style="margin: 0 90px 30px 0;">ジャンル</h6>
+          <h4><%= @item.genre.name %></h4>
+          </div>
+
+
+          <div style="display: flex;">
+          <h6 style="margin: 0 90px 30px 0;">税抜価格</h6>
+          <h4><%= @item.non_taxed_price %>円</h4>
+          </div>
+
+
+          <div style="display: flex;">
+          <h6 style="margin: 0 40px 30px 0;">販売ステータス</h6>
+          <h4><%= @item.is_active %></h4>
+          </div>
+
+          <td><%= link_to '編集する', edit_admin_item_path(@item), class: "btn btn-success", style: "margin-left:40%;"%></td>
+      </div>
+
+    </div>
+</div>

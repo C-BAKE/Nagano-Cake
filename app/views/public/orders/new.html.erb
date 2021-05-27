@@ -1,0 +1,50 @@
+<div class="container takasa">
+  <div class="row">
+    <div class="col-xs-7">
+	    <h2><i class="fas fa-pen"></i>注文情報入力</h2>
+      <p><%= notice %></p>
+      <%= form_with(model: @order, local: true, url: orders_confirm_path, method: :post) do |f| %>
+      <ul style="list-style: none;">
+        <strong>支払い方法</strong>
+    <!-- ラジオボタンの記述 -->
+        <li style="margin-left: 30px;"><%= f.radio_button :payment_method, 1, checked: "checked"%> クレジットカード </li>
+        <li style="margin-left: 30px;"><%= f.radio_button :payment_method, 0 %> 銀行振込</li>
+      </ul>
+      <ul style="list-style: none;">
+        <strong>お届け先</strong>
+<!-- 自身の住所  -->
+        <li style="margin-left: 30px;"><%= f.radio_button :address_number,1,checked: "checked" %> ご自身の住所 </li>
+        <li style="margin-left:60px;"><%= current_end_user.postal_code %> <%= current_end_user.address %><br><%= current_end_user.last_name %><%= current_end_user.first_name %></li><br><br>
+<!-- end -->
+      </ul>
+<!-- 登録済住所 -->
+      <ul style="list-style: none;">
+        <li style="margin-left: 30px;"><%= f.radio_button :address_number ,2%> 登録済からの選択</li>
+        <li style="margin-left:60px; padding:0 100px;"><%= f.collection_select(:id, current_end_user.addresses.all, :id, :address_all)%></li>
+      </ul>
+<!-- end -->
+
+      <ul style="list-style: none;">
+        <li style="margin-left: 30px;"><%= f.radio_button :address_number,3 %> 新しいお届け先</li>
+        <table style="margin-left: 60px;">
+            <tr>
+              <td><%= f.label :"郵便番号(ハイフンなし)"%></td>
+              <td><%= f.text_field :postal_code  %><td>
+            </tr>
+            <tr>
+              <td><%= f.label :"住    所"%></td>
+              <td><%= f.text_field :address ,size: "60" %></td>
+            </tr>
+              <td><%= f.label :"宛    名"%></td>
+              <td><%= f.text_field :name %></td>
+            </tr>
+        </table>
+　　　　　<div class="text-center">
+            <%= f.submit "確認画面に進む", class: "btn btn-primary text-cenrer" %>
+          </div>
+        <% end %>
+      <!-- end -->
+      </ul>
+      </div>
+    </div>
+</div>
